@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgba(66, 90, 172, 0.753);
+}
+
+.top {
+  min-height: 70vh;
+  background-color: pink;
+  color: rgba(29, 42, 87, 0.945);
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  margin: 30px auto;
+  width: 70%;
+  border-radius: 20px;
+  padding: 30px;
+}
+
+.console {
+  position: sticky;
+  height: 130px;
+  background-color: pink;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.icons {
+  margin-top: 40px;
+}
+.icons i {
+  cursor: pointer;
+}
+
+.progress-bar {
+  width: 80vw;
+  text-align: center;
+}
