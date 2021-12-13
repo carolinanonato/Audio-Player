@@ -6,13 +6,14 @@
 
 body {
   background-color: rgba(66, 90, 172, 0.753);
+  font-family: "Roboto", sans-serif;
 }
 
-.top {
+.container {
   min-height: 70vh;
   background-color: pink;
   color: rgba(29, 42, 87, 0.945);
-  font-family: "Roboto", sans-serif;
+
   display: flex;
   margin: 30px auto;
   width: 70%;
@@ -41,4 +42,32 @@ body {
 .progress-bar {
   width: 80vw;
   text-align: center;
+}
+
+.song-container {
+  margin-top: 30px;
+}
+
+.song-item {
+  height: 50px;
+  display: flex;
+  background-color: rgb(241, 146, 162);
+  width: 200%;
+  margin: 12px 0;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.song-item img {
+  width: 70px;
+  margin: 0 23px;
+}
+
+.songtime {
+  margin: 0 23px;
+}
+
+.songtime i {
+  cursor: pointer;
 }
