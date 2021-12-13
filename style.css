@@ -71,3 +71,7 @@ body {
 .songtime i {
   cursor: pointer;
 }
+
+input .progress-bar {
+  cursor: pointer;
+}
