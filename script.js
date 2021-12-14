@@ -23,12 +23,6 @@ let progressBar = document.querySelector('.progress-bar')
 
 // Event listeners
 
-progressBar.addEventListener('timeupdate', () => {
-    console.log('timeupdate')
-    //update seekbar
-
-})
-
 // Play/Pause click
 bigPlay.addEventListener('click', () => {
     if (audioEle.paused || audioEle.currentTime <= 0 ) {
@@ -40,4 +34,15 @@ bigPlay.addEventListener('click', () => {
         bigPlay.classList.remove('fa-pause');
         bigPlay.classList.add('fa-play');
     }
+})
+
+ //Update seekbar
+audioEle.addEventListener('timeupdate', () => {
+    progress = parseInt((audioEle.currentTime/audioEle.duration) * 100);
+    progressBar.value = progress;
+
+})
+
+progressBar.addEventListener('change', () => {
+    audioEle.currentTime = progressBar.value * audioEle.duration/100;
 })
