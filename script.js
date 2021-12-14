@@ -20,7 +20,9 @@ let bigPlay = document.querySelector('.bigPlay');
 let progressBar = document.querySelector('.progress-bar');
 let songItems = Array.from(document.getElementsByClassName('song-item'));
 let masterSongName = document.getElementById('masterSongName');
-
+let volume = document.querySelector('.volume-control');
+let mute = document.querySelector(".fa-volume-mute");
+let unmute = document.querySelector(".fa-volume-up");
 
 // Play/Pause click
 bigPlay.addEventListener('click', () => {
@@ -110,3 +112,26 @@ document.getElementById('previous').addEventListener('click', ()=>{
     bigPlay.classList.remove('fa-play');
     bigPlay.classList.add('fa-pause');
 });
+
+
+// Volume control
+
+volume.addEventListener("change", function(e) {
+    audioEle.volume = e.currentTarget.value / 100;
+    })
+
+unmute.addEventListener('click', muteOrUnmute);
+
+function muteOrUnmute () {
+    if (audioEle.muted == true) {
+        audioEle.muted = false;
+         unmute.classList.remove('fa-volume-mute');
+        unmute.classList.add('fa-volume-up');
+
+    } else {
+        audioEle.muted = true;
+        unmute.classList.remove('fa-volume-up');
+        unmute.classList.add('fa-volume-mute');
+            
+    }
+}
