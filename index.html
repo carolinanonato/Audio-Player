@@ -13,70 +13,26 @@
     <title>Audio Player</title>
 </head>
 <body>
+    
+    <div class="moon"></div>
+
     <div class="container">
-        <div class="song-list">
+        <div class="list-of-songs">
+              
         <h1>Audio Player</h1>
         <div class="song-container">
-        
-        <div class="song-item">
-            <img src="covers/chill.jpg" alt="song cover">
-            <span class="songName">Chill</span>
-            <span class="song-listplay">
-                <span class="songtime">03:57 </span><i id="0" class="fas fa-play smallPlay "></i></span>
-        </div>
-        <div class="song-item">
-            <img src="covers/chill.jpg" alt="song cover">
-            <span class="songName">Chill</span>
-            <span class="song-listplay">
-                <span class="songtime">03:57 </span><i id="1" class="fas fa-play smallPlay"></i></span>
-        </div>
-        <div class="song-item">
-            <img src="covers/chill.jpg" alt="song cover">
-            <span class="songName">Chill</span>
-            <span class="song-listplay">
-                <span class="songtime">03:57</span><i id="2" class="fas fa-play smallPlay"></i></span>
-        </div>
-        <div class="song-item">
-            <img src="covers/chill.jpg" alt="song cover">
-            <span class="songName">Chill</span>
-            <span class="song-listplay">
-                <span class="songtime">03:57</span> <i id="3" class="fas fa-play smallPlay"></i></span>
-        </div>
-        <div class="song-item">
-            <img src="covers/chill.jpg" alt="song cover">
-            <span class="songName">Chill</span>
-            <span class="song-listplay">
-                <span class="songtime">03:57</span> <i id="4" class="fas fa-play smallPlay"></i></span>
-        </div>
-        <div class="song-item">
-            <img src="covers/chill.jpg" alt="song cover">
-            <span class="songName">Chill</span>
-            <span class="song-listplay">
-                <span class="songtime">03:57 </span><i id="5" class="fas fa-play smallPlay"></i></span>
-        </div>
-        <div class="song-item">
-            <img src="covers/chill.jpg" alt="song cover">
-            <span class="songName">Chill</span>
-            <span class="song-listplay">
-                <span class="songtime">03:57 </span><i id="6" class="fas fa-play smallPlay"></i></span>
-        </div>
-        <div class="song-item">
-            <img src="covers/chill.jpg" alt="song cover">
-            <span class="songName">Chill</span>
-            <span class="song-listplay">
-                <span class="songtime">03:57</span> <i id="7" class="fas fa-play smallPlay"></i></span>
-        </div>
-        <div class="song-item">
-            <img src="covers/chill.jpg" alt="song cover">
-            <span class="songName">Chill</span>
-            <span class="song-listplay">
-                <span class="songtime">03:57 </span><i id="8" class="fas fa-play smallPlay"></i></span>
-        </div>
-        <div class="song-item">
-            <img src="covers/chill.jpg" alt="song cover">
-            <span class="songName">Chill</span>
-            <span class="song-listplay">
-                <span class="songtime">03:57</span> <i id="9" class="fas fa-play smallPlay"></i></span>
+
+
+            
+          <div class="song-list">
+              <div class="filter">
+            <select class="filterSongs">
+                <option id="relax">Relax</option>
+              <option id="play">Play</option>
+              <option id="cry">Cry</option>
+                </select>
+            </div>
+            <div class="all-songs">
         </div>
     </div>
 </div>
@@ -86,21 +42,22 @@
     <div class="console">
         
        <input type="range" name="range" class="progress-bar" min="0" value="0" max="100">
-       <div class="volume">
-        <i class="fas fa-volume-up"></i>
-       
-        <input type="range" class="volume-control">
-     </div>
+      
        <div class="icons">
+        <div class="volume">
+            <i class="fas fa-volume-up"></i>
+           
+            <input type="range" class="volume-control">
+         </div>
         <i class="fas fa-backward" id="previous"></i>
         <i class="fas fa-play bigPlay" id="masterPlay"></i>
        <i class="fas fa-forward" id="next"></i>
        </div>
        <div class="song-info">
-          <p id="masterSongName">Chill - Unknown Artist</p>
+          <p id="masterSongName"></p>
        </div>
     </div>
-
+<div class="star"></div>
     <script src="script.js"></script>
 </body>
 </html>

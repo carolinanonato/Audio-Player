@@ -9,50 +9,57 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+h1 {
+  text-align: center;
+}
+
+.moon {
+  height: 100px;
+  width: 100px;
+  box-shadow: 10px 5px #fdd3b0;
+  border-radius: 50%;
+  margin: 5px;
+  position: absolute;
+  left: 100px;
+  z-index: -1;
+}
+
 .container {
   min-height: 70vh;
   background-color: pink;
   color: rgba(29, 42, 87, 0.945);
-
   display: flex;
   margin: 30px auto;
-  width: 70%;
+  width: 600px;
   border-radius: 20px;
   padding: 30px;
 }
 
-.console {
-  position: sticky;
-  height: 130px;
-  background-color: pink;
-  bottom: 0;
+select {
+  background-color: rgb(241, 146, 162);
+  border-radius: 15px;
+  width: 80x;
+  padding: 5px;
+  right: 100px;
+  border: 1px solid rgb(241, 146, 162);
+}
+
+.filter {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.icons {
-  margin-top: 40px;
-}
-.icons i {
-  cursor: pointer;
-}
-
-.progress-bar {
-  width: 80vw;
-  text-align: center;
+  justify-content: flex-end;
 }
 
 .song-container {
   margin-top: 30px;
+  display: flex;
+  flex-direction: column;
 }
 
 .song-item {
-  height: 50px;
+  height: 40px;
   display: flex;
   background-color: rgb(241, 146, 162);
-  width: 200%;
+  width: 500px;
   margin: 12px 0;
   justify-content: space-between;
   align-items: center;
@@ -61,6 +68,8 @@ body {
 
 .song-item img {
   width: 70px;
+  height: 40px;
+  border-radius: 10px;
   margin: 0 23px;
 }
 
@@ -68,7 +77,7 @@ body {
   margin: 0 23px;
 }
 
-.songtime i {
+.smallPlay {
   cursor: pointer;
 }
 
@@ -78,4 +87,99 @@ input .progress-bar {
 
 .song-listplay i {
   margin-right: 10px;
+}
+
+.console {
+  position: sticky;
+  height: 150px;
+  background-color: pink;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+}
+
+.icons {
+  margin-top: 10px;
+  display: flex;
+  position: relative;
+  width: 800px;
+}
+
+.icons i {
+  cursor: pointer;
+  font-size: 25px;
+  padding: 10px;
+}
+
+.fa-backward {
+  margin-left: 150px;
+}
+
+.progress-bar {
+  width: 80vw;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+input[type="range"] {
+  background-color: red;
+  cursor: pointer;
+}
+
+.volume {
+  position: relative;
+  left: 0;
+}
+
+.volume i {
+  font-size: 25px;
+}
+.star {
+  width: 0;
+  height: 0;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  margin: 20px;
+  border-right: 100px solid transparent;
+  border-bottom: 70px solid #fdd3b0;
+  border-left: 100px solid transparent;
+  transform: rotate(35deg) scale(0.5);
+  position: absolute;
+  left: 1000px;
+  z-index: -1;
+}
+
+.star::before {
+  content: "";
+  width: 0;
+  height: 0;
+  display: block;
+  position: absolute;
+  top: -45px;
+  left: -65px;
+  border-bottom: 80px solid #fdd3b0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  transform: rotate(-35deg);
+  z-index: -1;
+}
+
+.star::after {
+  content: "";
+  width: 0;
+  height: 0;
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: -105px;
+  border-bottom: 70px solid #fdd3b0;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  transform: rotate(-70deg);
+  z-index: -1;
 }
