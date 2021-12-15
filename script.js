@@ -26,19 +26,48 @@ let unmute = document.querySelector(".fa-volume-up");
 let selection = document.querySelector(".filterSongs");
 
 
+// Append songs in HTML 
 const appendMusic = function(item) {
     document.querySelector('.all-songs').innerHTML += 
     `<div class="song-item">
+    <i id="${item.index}" class="fas smallPlay fa-play"></i></span>
     <img src="${item.cover}" alt="song cover">
     <span class="songName">${item.songName}</span>
     <span class="song-listplay">
-    <span class="songtime">${item.length}</span><i id="${item.index}" class="fas smallPlay fa-play"></i></span>
+    <span class="songtime">${item.length}</span>
     </div>
     `
 }
 
-
 songs.forEach(appendMusic);
+
+// filter
+document.getElementById("filterSongs").innerHTML = 
+`<option value="all">All</option>
+<option value="relax">Relax</option>
+<option value="play">Play</option>
+<option value="cry">Cry</option>
+`
+
+
+function filterRelax(songs) {
+    return songs.genre == 'relax'
+}
+
+function filterPlay(songs) {
+    return songs.genre == 'play'
+}
+
+function filterCry(songs) {
+    return songs.genre == 'cry'
+}
+
+
+var relax = songs.filter(filterRelax);
+var play = songs.filter(filterPlay);
+var cry = songs.filter(filterCry)
+
+
 
 // Play/Pause click
 bigPlay.addEventListener('click', () => {
@@ -62,8 +91,8 @@ document.getElementById('next').addEventListener('click', ()=>{
     else{
         songIndex += 1;
     }
-    audioEle.src = `music/${songIndex+1}.mp3`;
-    masterSongName.innerText = songs[songIndex].songName;
+    audioEle.src = `music/${songIndex}.mp3`;
+    masterSongName.innerText = songs[songIndex+1].songName;
         audioEle.currentTime = 0;
         audioEle.play();
         bigPlay.classList.remove('fa-play');
@@ -78,8 +107,8 @@ document.getElementById('previous').addEventListener('click', ()=>{
     else{
         songIndex -= 1;
     }
-    audioEle.src = `songs/${songIndex+1}.mp3`;
-    masterSongName.innerText = songs[songIndex].songName;
+    audioEle.src = `songs/${songIndex}.mp3`;
+    masterSongName.innerText = songs[songIndex+1].songName;
     audioEle.currentTime = 0;
     audioEle.play();
     bigPlay.classList.remove('fa-play');
@@ -115,16 +144,18 @@ const allPlays = () => {
 };
 
 Array.from(document.getElementsByClassName('smallPlay')).forEach((element)=>{
-    console.log(element);
+    
         element.addEventListener('click', (e)=>{ 
         allPlays();
-        masterSongName.innerText = songs[songIndex].songName;
+        masterSongName.innerText = songs[songIndex+1].songName;
         songIndex = parseInt(e.target.id);
-        console.log(e.target);
+        
         e.target.classList.remove('fa-play');
         e.target.classList.add('fa-pause');
         audioEle.src = `music/${songIndex+1}.mp3`;
         audioEle.currentTime = 0;
+
+        
         audioEle.play();
         bigPlay.classList.remove('fa-play');
         bigPlay.classList.add('fa-pause');
@@ -154,12 +185,4 @@ function muteOrUnmute () {
             
     }
 }
-
-
-
-
-
-
-
-// filter
 

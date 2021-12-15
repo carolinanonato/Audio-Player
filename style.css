@@ -61,9 +61,10 @@ select {
   background-color: rgb(241, 146, 162);
   width: 500px;
   margin: 12px 0;
-  justify-content: space-between;
+  gap: 50px;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 5px;
+  position: relative;
 }
 
 .song-item img {
@@ -71,14 +72,21 @@ select {
   height: 40px;
   border-radius: 10px;
   margin: 0 23px;
+  margin-left: -10px;
 }
 
 .songtime {
   margin: 0 23px;
+
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  text-align: center;
 }
 
 .smallPlay {
   cursor: pointer;
+  margin-left: 10px;
 }
 
 input .progress-bar {
@@ -92,7 +100,7 @@ input .progress-bar {
 .console {
   position: sticky;
   height: 150px;
-  background-color: pink;
+  background-color: rgb(196, 163, 223);
   bottom: 0;
   display: flex;
   justify-content: center;
