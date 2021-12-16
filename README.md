@@ -1,6 +1,6 @@
 # 🎵 Audio Player
 
-This music player was the final project for classes 113 and 115 of the Web Design and Development course and Humber College.
+This music player was the final project for classes 113 and 115 of the Web Design and Development course at Humber College.
 
 ## Features
 
