@@ -14,7 +14,7 @@ This music player was the final project for classes 113 and 115 of the Web Desig
 
 - Tracking elapsed song time
 - Fix minor bug that prevents the small pause button to function
-- Color change the song that's been currently playing
+- Color change the song that's currently playing
 
 ### Sources
 - Songs: https://freemusicarchive.org/
