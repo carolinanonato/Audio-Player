@@ -16,5 +16,9 @@ This music player was the final project for classes 113 and 115 of the Web Desig
 - Fix minor bug that prevents the small pause button to function
 - Color change the song that's been currently playing
 
+### Sources
+- Songs: https://freemusicarchive.org/
+
+You can interact and listen to the songs here: https://carolinanonato.github.io/Audio-Player/
 
 https://user-images.githubusercontent.com/44845754/146464167-3348a44d-935e-432b-8dc9-3d957c963ee3.mp4
