@@ -25,6 +25,8 @@ let mute = document.querySelector(".fa-volume-mute");
 let unmute = document.querySelector(".fa-volume-up");
 var smallPlay = document.getElementsByClassName('smallPlay');
 
+
+
 // -------------- APPEND SONGS IN HTML ---------------------
 const appendMusic = function (item) {
     document.querySelector('.all-songs').innerHTML += 
@@ -46,6 +48,8 @@ bigPlay.addEventListener('click', () => {
         audioEle.play();
         bigPlay.classList.remove('fa-play');
         bigPlay.classList.add('fa-pause');
+        
+
     } else {
         audioEle.pause();
         bigPlay.classList.remove('fa-pause');
@@ -302,10 +306,6 @@ Array.from(document.getElementsByClassName('smallPlay')).forEach((element)=>{
         
     })
 });
-
-
-// ------------------ PLAYING THE FILTERED SONGS --------------
-
 
 
 // ----------- VOLUME CONTROL ---------------
