@@ -13,49 +13,47 @@
     <title>Audio Player</title>
 </head>
 <body>
-    
-    <div class="moon"></div>
+        
+        <div class="moon"></div>
 
-    <div class="container">
-        <div class="list-of-songs">
-              
-        <h1>Audio Player</h1>
-        <div class="song-container">
+        <div class="container">
+            <div class="list-of-songs">
+                
+            <h1>Audio Player</h1>
+            <div class="song-container">
 
-
-            
-          <div class="song-list">
-              <div class="filter">
-                <select id="filterSongs">
-                  
-                </select>
+            <div class="song-list">
+                <div class="filter">
+                    <select id="filterSongs">
+                    
+                    </select>
+                </div>
+                <div class="all-songs">
             </div>
-            <div class="all-songs">
         </div>
     </div>
-</div>
-        <div class="song-banner"></div>
+            <div class="song-banner"></div>
+        </div>
     </div>
-</div>
-    <div class="console">
+        <div class="console">
+            
+        <input type="range" name="range" class="progress-bar" min="0" value="0" max="100">
         
-       <input type="range" name="range" class="progress-bar" min="0" value="0" max="100">
-      
-       <div class="icons">
-        <div class="volume">
-            <i class="fas fa-volume-up"></i>
-           
-            <input type="range" class="volume-control">
-         </div>
-        <i class="fas fa-backward" id="previous"></i>
-        <i class="fas fa-play bigPlay" id="masterPlay"></i>
-       <i class="fas fa-forward" id="next"></i>
-       </div>
-       <div class="song-info">
-          <p id="masterSongName"></p>
-       </div>
-    </div>
-<div class="star"></div>
-    <script src="script.js"></script>
+        <div class="icons">
+            <div class="volume">
+                <i class="fas fa-volume-up"></i>
+            
+                <input type="range" class="volume-control">
+            </div>
+            <i class="fas fa-backward" id="previous"></i>
+            <i class="fas fa-play bigPlay" id="masterPlay"></i>
+        <i class="fas fa-forward" id="next"></i>
+        </div>
+        <div class="song-info">
+            <p id="masterSongName"></p>
+        </div>
+        </div>
+    <div class="star"></div>
+        <script src="script.js"></script>
 </body>
 </html>

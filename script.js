@@ -1,4 +1,4 @@
-//Variables
+// ---------------- GLOBAL VARIABLES --------------------------
 
 let songs = [
     {songName: 'Chill', artist: 'Unknown Artist', src: 'music/chill.mp3', cover: 'covers/chill.jpg', length: '3:07', genre:'relax', index: '0'},
@@ -23,11 +23,11 @@ let masterSongName = document.getElementById('masterSongName');
 let volume = document.querySelector('.volume-control');
 let mute = document.querySelector(".fa-volume-mute");
 let unmute = document.querySelector(".fa-volume-up");
-let selection = document.querySelector(".filterSongs");
 
 
-// Append songs in HTML 
-const appendMusic = function(item) {
+
+// -------------- APPEND SONGS IN HTML ---------------------
+const appendMusic = function (item) {
     document.querySelector('.all-songs').innerHTML += 
     `<div class="song-item">
     <i id="${item.index}" class="fas smallPlay fa-play"></i></span>
@@ -41,35 +41,7 @@ const appendMusic = function(item) {
 
 songs.forEach(appendMusic);
 
-// filter
-document.getElementById("filterSongs").innerHTML = 
-`<option value="all">All</option>
-<option value="relax">Relax</option>
-<option value="play">Play</option>
-<option value="cry">Cry</option>
-`
-
-
-function filterRelax(songs) {
-    return songs.genre == 'relax'
-}
-
-function filterPlay(songs) {
-    return songs.genre == 'play'
-}
-
-function filterCry(songs) {
-    return songs.genre == 'cry'
-}
-
-
-var relax = songs.filter(filterRelax);
-var play = songs.filter(filterPlay);
-var cry = songs.filter(filterCry)
-
-
-
-// Play/Pause click
+// -------------------- PLAY / PAUSE -----------------------
 bigPlay.addEventListener('click', () => {
     if (audioEle.paused || audioEle.currentTime <= 0 ) {
         audioEle.play();
@@ -82,8 +54,8 @@ bigPlay.addEventListener('click', () => {
     }
 })
 
-// Next and previous
 
+// -------------- NEXT AND PREVIOUS --------------------
 document.getElementById('next').addEventListener('click', ()=>{
     if(songIndex>=9){
         songIndex = 0
@@ -91,8 +63,8 @@ document.getElementById('next').addEventListener('click', ()=>{
     else{
         songIndex += 1;
     }
-    audioEle.src = `music/${songIndex}.mp3`;
-    masterSongName.innerText = songs[songIndex+1].songName;
+    audioEle.src = `music/${songIndex+1}.mp3`;
+    masterSongName.innerText = songs[songIndex].songName;
         audioEle.currentTime = 0;
         audioEle.play();
         bigPlay.classList.remove('fa-play');
@@ -107,8 +79,8 @@ document.getElementById('previous').addEventListener('click', ()=>{
     else{
         songIndex -= 1;
     }
-    audioEle.src = `songs/${songIndex}.mp3`;
-    masterSongName.innerText = songs[songIndex+1].songName;
+    audioEle.src = `songs/${songIndex+1}.mp3`;
+    masterSongName.innerText = songs[songIndex].songName;
     audioEle.currentTime = 0;
     audioEle.play();
     bigPlay.classList.remove('fa-play');
@@ -116,7 +88,8 @@ document.getElementById('previous').addEventListener('click', ()=>{
 });
 
 
- //Update seekbar
+
+ //------------------ UPDATING THE PROGRESS BAR -------------------
 audioEle.addEventListener('timeupdate', () => {
     progress = parseInt((audioEle.currentTime/audioEle.duration) * 100);
     progressBar.value = progress;
@@ -127,14 +100,17 @@ progressBar.addEventListener('change', () => {
     audioEle.currentTime = progressBar.value * audioEle.duration/100;
 })
 
-//Creating Playlist
+
+//--------------- CREATING PLAYLIST --------------------
+
 songItems.forEach((element, i) => {
 element.getElementsByTagName("img")[0].src = songs[i].cover;
 element.getElementsByClassName("songName")[0].innerText = songs[i].songName;
 element.getElementsByClassName("songtime")[0].innerText = songs[i].length;
 })
 
-//Playing songs in playlist
+
+// ---------- PLAYING SONGS IN A PLAYLIST ------------
 
 const allPlays = () => {
     Array.from(document.getElementsByClassName('smallPlay')).forEach((element) => {
@@ -144,18 +120,19 @@ const allPlays = () => {
 };
 
 Array.from(document.getElementsByClassName('smallPlay')).forEach((element)=>{
-    
+        
         element.addEventListener('click', (e)=>{ 
         allPlays();
-        masterSongName.innerText = songs[songIndex+1].songName;
         songIndex = parseInt(e.target.id);
-        
         e.target.classList.remove('fa-play');
         e.target.classList.add('fa-pause');
-        audioEle.src = `music/${songIndex+1}.mp3`;
-        audioEle.currentTime = 0;
 
         
+        audioEle.src = `music/${songIndex+1}.mp3`;
+        masterSongName.innerText = songs[songIndex].songName;
+
+
+        audioEle.currentTime = 0;        
         audioEle.play();
         bigPlay.classList.remove('fa-play');
         bigPlay.classList.add('fa-pause');
@@ -163,8 +140,52 @@ Array.from(document.getElementsByClassName('smallPlay')).forEach((element)=>{
     })
 });
 
+// ----------------- FILTER -----------------
 
-// Volume control
+document.getElementById("filterSongs").innerHTML = 
+`<option value="all">All</option>
+<option value="relax">Relax</option>
+<option value="play">Play</option>
+<option value="cry">Cry</option>
+`
+
+function filterRelax(songs) {
+    return songs.genre == 'relax'
+}
+
+function filterPlay(songs) {
+    return songs.genre == 'play'
+}
+
+function filterCry(songs) {
+    return songs.genre == 'cry'
+}
+
+var relax = songs.filter(filterRelax);
+var play = songs.filter(filterPlay);
+var cry = songs.filter(filterCry)
+
+var a = document.getElementById('filterSongs');
+a.addEventListener('change', function () {
+    if (a.value =='all'){
+        document.querySelector('.all-songs').innerHTML= ``;
+        songs.forEach(appendMusic)
+    
+    } else if (a.value =='relax'){
+    document.querySelector('.all-songs').innerHTML= ``;
+   relax.forEach(appendMusic);
+   } else if (a.value == 'play') {
+    document.querySelector('.all-songs').innerHTML= ``;
+ 
+    play.forEach(appendMusic);
+   } else if (a.value == 'cry') {
+    document.querySelector('.all-songs').innerHTML= ``;
+    cry.forEach(appendMusic);
+   }
+}), false;
+
+
+// ----------- VOLUME CONTROL ---------------
 
 volume.addEventListener("change", function(e) {
     audioEle.volume = e.currentTarget.value / 100;
@@ -185,4 +206,5 @@ function muteOrUnmute () {
             
     }
 }
+
 
