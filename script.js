@@ -23,8 +23,7 @@ let masterSongName = document.getElementById('masterSongName');
 let volume = document.querySelector('.volume-control');
 let mute = document.querySelector(".fa-volume-mute");
 let unmute = document.querySelector(".fa-volume-up");
-
-
+var smallPlay = document.getElementsByClassName('smallPlay');
 
 // -------------- APPEND SONGS IN HTML ---------------------
 const appendMusic = function (item) {
@@ -110,7 +109,171 @@ element.getElementsByClassName("songtime")[0].innerText = songs[i].length;
 })
 
 
-// ---------- PLAYING SONGS IN A PLAYLIST ------------
+
+// ----------------- FILTER -----------------
+
+document.getElementById("filterSongs").innerHTML = 
+`<option value="all">All</option>
+<option value="relax">Relax</option>
+<option value="play">Play</option>
+<option value="cry">Cry</option>
+`
+
+function filterRelax(songs) {
+    return songs.genre == 'relax'
+   
+}
+
+function filterPlay(songs) {
+    return songs.genre == 'play'
+}
+
+function filterCry(songs) {
+    return songs.genre == 'cry'
+}
+
+var relax = songs.filter(filterRelax);
+var play = songs.filter(filterPlay);
+var cry = songs.filter(filterCry)
+
+var finalFilter = document.getElementById('filterSongs');
+finalFilter.addEventListener('change', function () {
+    //ALL
+    if (finalFilter.value =='all'){
+        document.querySelector('.all-songs').innerHTML= ``;
+        songs.forEach(appendMusic);
+
+        function filterAll() {       
+            Array.from(document.getElementsByClassName('smallPlay')).forEach((element)=>{
+            
+                element.addEventListener('click', (e)=>{ 
+                allPlays();
+                songIndex = parseInt(e.target.id);
+                e.target.classList.remove('fa-play');
+                e.target.classList.add('fa-pause');
+        
+                
+                audioEle.src = `music/${songIndex+1}.mp3`;
+                masterSongName.innerText = songs[songIndex].songName;
+        
+        
+                audioEle.currentTime = 0;        
+                audioEle.play();
+                bigPlay.classList.remove('fa-play');
+                bigPlay.classList.add('fa-pause');
+                
+            })
+        });
+           };
+        for (i=0; i< smallPlay.length; i++) {
+            smallPlay[i].addEventListener('click', filterAll);
+            
+        }
+    
+    // RELAX
+    } else if (finalFilter.value =='relax'){
+
+    document.querySelector('.all-songs').innerHTML= ``;
+   relax.forEach(appendMusic);
+        
+       function filterRelax() {       
+        Array.from(document.getElementsByClassName('smallPlay')).forEach((element)=>{
+        
+            element.addEventListener('click', (e)=>{ 
+            allPlays();
+            songIndex = parseInt(e.target.id);
+            e.target.classList.remove('fa-play');
+            e.target.classList.add('fa-pause');
+    
+            
+            audioEle.src = `music/${songIndex+1}.mp3`;
+            masterSongName.innerText = songs[songIndex].songName;
+    
+    
+            audioEle.currentTime = 0;        
+            audioEle.play();
+            bigPlay.classList.remove('fa-play');
+            bigPlay.classList.add('fa-pause');
+            
+        })
+    });
+       };
+    for (i=0; i< smallPlay.length; i++) {
+        smallPlay[i].addEventListener('click', filterRelax);
+        
+    }
+    
+           
+
+
+ //PLAY
+   } else if (finalFilter.value == 'play') {
+    document.querySelector('.all-songs').innerHTML= ``;
+    play.forEach(appendMusic);
+
+    function filterPlay() {       
+        Array.from(document.getElementsByClassName('smallPlay')).forEach((element)=>{
+        
+            element.addEventListener('click', (e)=>{ 
+            allPlays();
+            songIndex = parseInt(e.target.id);
+            e.target.classList.remove('fa-play');
+            e.target.classList.add('fa-pause');
+    
+            
+            audioEle.src = `music/${songIndex+1}.mp3`;
+            masterSongName.innerText = songs[songIndex].songName;
+    
+    
+            audioEle.currentTime = 0;        
+            audioEle.play();
+            bigPlay.classList.remove('fa-play');
+            bigPlay.classList.add('fa-pause');
+            
+        })
+    });
+       };
+    for (i=0; i< smallPlay.length; i++) {
+        smallPlay[i].addEventListener('click', filterPlay);
+        
+    }
+
+
+    //CRY
+   } else if (finalFilter.value == 'cry') {
+    document.querySelector('.all-songs').innerHTML= ``;
+    cry.forEach(appendMusic);
+function filterCry() {       
+            Array.from(document.getElementsByClassName('smallPlay')).forEach((element)=>{
+            
+                element.addEventListener('click', (e)=>{ 
+                allPlays();
+                songIndex = parseInt(e.target.id);
+                e.target.classList.remove('fa-play');
+                e.target.classList.add('fa-pause');
+        
+                
+                audioEle.src = `music/${songIndex+1}.mp3`;
+                masterSongName.innerText = songs[songIndex].songName;
+        
+        
+                audioEle.currentTime = 0;        
+                audioEle.play();
+                bigPlay.classList.remove('fa-play');
+                bigPlay.classList.add('fa-pause');
+                
+            })
+        });
+           };
+        for (i=0; i< smallPlay.length; i++) {
+            smallPlay[i].addEventListener('click', filterCry);
+            
+        }
+
+   }
+}), false;
+
+// ---------- PLAYING SONGS IN DEFAULT PLAYLIST (without filter)------------
 
 const allPlays = () => {
     Array.from(document.getElementsByClassName('smallPlay')).forEach((element) => {
@@ -140,49 +303,9 @@ Array.from(document.getElementsByClassName('smallPlay')).forEach((element)=>{
     })
 });
 
-// ----------------- FILTER -----------------
 
-document.getElementById("filterSongs").innerHTML = 
-`<option value="all">All</option>
-<option value="relax">Relax</option>
-<option value="play">Play</option>
-<option value="cry">Cry</option>
-`
+// ------------------ PLAYING THE FILTERED SONGS --------------
 
-function filterRelax(songs) {
-    return songs.genre == 'relax'
-}
-
-function filterPlay(songs) {
-    return songs.genre == 'play'
-}
-
-function filterCry(songs) {
-    return songs.genre == 'cry'
-}
-
-var relax = songs.filter(filterRelax);
-var play = songs.filter(filterPlay);
-var cry = songs.filter(filterCry)
-
-var a = document.getElementById('filterSongs');
-a.addEventListener('change', function () {
-    if (a.value =='all'){
-        document.querySelector('.all-songs').innerHTML= ``;
-        songs.forEach(appendMusic)
-    
-    } else if (a.value =='relax'){
-    document.querySelector('.all-songs').innerHTML= ``;
-   relax.forEach(appendMusic);
-   } else if (a.value == 'play') {
-    document.querySelector('.all-songs').innerHTML= ``;
- 
-    play.forEach(appendMusic);
-   } else if (a.value == 'cry') {
-    document.querySelector('.all-songs').innerHTML= ``;
-    cry.forEach(appendMusic);
-   }
-}), false;
 
 
 // ----------- VOLUME CONTROL ---------------

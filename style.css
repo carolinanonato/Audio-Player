@@ -104,7 +104,7 @@ input .progress-bar {
 .console {
   position: sticky;
   height: 150px;
-  background-color: rgb(196, 163, 223);
+  background-color: rgba(106, 91, 238, 0.452);
   bottom: 0;
   display: flex;
   justify-content: center;
